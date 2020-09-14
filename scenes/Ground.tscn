@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/groundTile2.png" type="Texture" id=1]
+
+[node name="Ground" type="TextureRect"]
+margin_left = 1.0
+margin_right = 1024.0
+margin_bottom = 32.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
