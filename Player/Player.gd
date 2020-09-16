@@ -1,24 +1,18 @@
 extends KinematicBody2D
 
-# literally copy-pasted this code from http://kidscancode.org/godot_recipes/2d/platform_character/
-
-export (int) var speed = 200
-export (int) var jump_speed = -800
-export (int) var gravity = 4000
-
 var velocity = Vector2.ZERO
 
-func get_input():
-	velocity.x = 0
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += speed
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= speed
+export var jump_velocity = 1500.0
+export var gravity_scale = 20.0
 
 func _physics_process(delta):
-	get_input()
-	velocity.y += gravity * delta
-	velocity = move_and_slide(velocity, Vector2.UP)
-	if Input.is_action_just_pressed("ui_up"):
+	velocity.y += gravity_scale	
+	move_and_slide(velocity)
+	if Input.is_action_pressed("Jump"):
 		if is_on_floor():
-			velocity.y = jump_speed
+			velocity -= jump_velocity
+		
+#func _input(event):
+#	velocity = Vector2.ZERO
+#	if event.is_action_pressed("Jump"):
+#		velocity.y-=jump_velocity
